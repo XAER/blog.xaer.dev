@@ -29,7 +29,8 @@ const Footer = () => {
           </h3>
           <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
             <a
-              href="https://nextjs.org/docs/basic-features/pages"
+              href="https://xaer.dev"
+              target="_blank"
               className={classNames(
                 "mx-3 border font-bold py-3 px-12 lg:px-8 duration-200 transition-all mb-6 lg:mb-0",
                 {
@@ -44,6 +45,7 @@ const Footer = () => {
             </a>
             <a
               href={`https://github.com/XAER/${PROJECT_PATH}`}
+              target="_blank"
               className={classNames("mx-3 font-bold hover:underline", {
                 "text-gray-900": theme === "light",
                 "text-gray-100": theme === "dark",
