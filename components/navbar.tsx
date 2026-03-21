@@ -1,77 +1,47 @@
-import Container from "./container";
+import Link from "next/link";
 import { useContext } from "react";
 import { FaSun } from "react-icons/fa";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { ThemeContext } from "../context/themeContext";
-import cn from "classnames";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <div className="">
-      <Container>
-        <div className="flex flex-col lg:flex-row justify-between items-center py-4">
-          <div className="flex flex-col lg:flex-row items-center">
-            <a
-              href="/"
-              className={cn(
-                "text-3xl font-bold transition-colors ease-in duration-100",
-                {
-                  "text-gray-900": theme === "light",
-                  "text-gray-100": theme === "dark",
-                }
-              )}
-            >
-              XAERdev
-            </a>
-          </div>
-          <div className="flex flex-col lg:flex-row justify-center items-center">
+    <nav
+      className="sticky top-0 z-50 border-b border-subtle"
+      style={{ background: "var(--navbar-bg)", backdropFilter: "blur(12px)" }}
+    >
+      <div className="max-w-content mx-auto px-6">
+        <div className="flex items-center justify-between h-12">
+          <Link href="/" className="font-mono text-sm leading-none">
+            <span className="text-muted">~/blog.xaer</span>
+            <span className="text-accent">.dev</span>
+          </Link>
+          <div className="flex items-center gap-6">
             <a
               href="https://xaer.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                "font-bold transition-all ease-in duration-100 hover:text-fuchsia-700 hover:text-lg",
-                {
-                  "text-gray-900 ": theme === "light",
-                  "text-gray-100": theme === "dark",
-                }
-              )}
+              className="font-mono text-xs text-muted hover:text-primary transition-colors duration-150"
             >
-              My site
+              xaer.dev
             </a>
-            <div
-              className={cn(
-                "mx-3 font-bold transition-all ease-in duration-100",
-                {
-                  "text-gray-900 hover:text-fuchsia-700 hover:text-lg":
-                    theme === "light",
-                  "text-gray-100": theme === "dark",
-                }
-              )}
+            <button
+              onClick={toggleTheme}
+              className="text-muted hover:text-primary transition-colors duration-150"
+              aria-label="Toggle theme"
             >
-              |
-            </div>
-            <div>
               {theme === "light" ? (
-                <FaSun
-                  onClick={toggleTheme}
-                  size={24}
-                  className="cursor-pointer text-yellow-500 transition-all ease-in duration-75"
-                />
+                <FaSun size={13} />
               ) : (
-                <BsFillMoonStarsFill
-                  onClick={toggleTheme}
-                  size={24}
-                  className="text-yellow-200 cursor-pointer transition-all ease-in duration-75"
-                />
+                <BsFillMoonStarsFill size={13} />
               )}
-            </div>
+            </button>
           </div>
         </div>
-      </Container>
-    </div>
+      </div>
+    </nav>
   );
 };
 

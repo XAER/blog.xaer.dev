@@ -1,6 +1,3 @@
-import classNames from "classnames";
-import React from "react";
-import { ThemeContext } from "../context/themeContext";
 import markdownStyles from "./markdown-styles.module.css";
 
 type Props = {
@@ -8,19 +5,10 @@ type Props = {
 };
 
 const PostBody = ({ content }: Props) => {
-  const { theme } = React.useContext(ThemeContext);
-
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="pb-16">
       <div
-        className={classNames(
-          markdownStyles["markdown"],
-          "transition-all duration-100 ease-in",
-          {
-            "text-gray-900": theme === "light",
-            "text-gray-100": theme === "dark",
-          }
-        )}
+        className={markdownStyles["markdown"]}
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </div>

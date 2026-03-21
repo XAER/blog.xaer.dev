@@ -1,11 +1,6 @@
-import Avatar from "./avatar";
 import DateFormatter from "./date-formatter";
-import CoverImage from "./cover-image";
 import Link from "next/link";
 import type Author from "../interfaces/author";
-import { ThemeContext } from "../context/themeContext";
-import React from "react";
-import cn from "classnames";
 
 type Props = {
   title: string;
@@ -24,49 +19,36 @@ const HeroPost = ({
   author,
   slug,
 }: Props) => {
-  const { theme } = React.useContext(ThemeContext);
-
   return (
-    <section>
-      <div className="mb-8 md:mb-16">
-        <CoverImage title={title} src={coverImage} slug={slug} />
+    <section className="py-14 border-b border-subtle">
+      <div className="flex items-center gap-3 mb-6">
+        <span className="font-mono text-xs text-accent">02</span>
+        <span className="text-[18px] text-primary font-medium">latest</span>
+        <div className="flex-1 h-px bg-subtle" />
       </div>
-      <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
-        <div>
-          <h3 className="mb-4 text-4xl lg:text-5xl leading-tight">
-            <Link as={`/posts/${slug}`} href="/posts/[slug]">
-              <a
-                className={cn(
-                  "hover:underline transition-all ease-in duration-100",
-                  {
-                    "text-gray-900": theme === "light",
-                    "text-gray-100": theme === "dark",
-                  }
-                )}
-              >
-                {title}
-              </a>
-            </Link>
-          </h3>
-          <div className="mb-4 md:mb-0 text-lg">
+      <Link
+        href={`/posts/${slug}`}
+        className="group block rounded-[6px] border border-subtle hover:border-subtle-accent bg-surface hover:bg-accent-dim transition-all duration-150 overflow-hidden"
+      >
+        <div className="overflow-hidden">
+          <img
+            src={coverImage}
+            alt={`Cover for ${title}`}
+            className="w-full object-cover aspect-video group-hover:scale-[1.01] transition-transform duration-300"
+          />
+        </div>
+        <div className="p-4">
+          <div className="flex items-start justify-between gap-4 mb-2">
+            <h3 className="text-sm text-primary font-medium group-hover:text-accent transition-colors duration-150">
+              {title}
+            </h3>
             <DateFormatter dateString={date} />
           </div>
-        </div>
-        <div>
-          <p
-            className={cn(
-              "text-lg leading-relaxed mb-4 transition-all ease-in duration-100",
-              {
-                "text-gray-900": theme === "light",
-                "text-gray-100": theme === "dark",
-              }
-            )}
-          >
+          <p className="text-sm text-muted leading-relaxed line-clamp-2">
             {excerpt}
           </p>
-          <Avatar name={author.name} picture={author.picture} />
         </div>
-      </div>
+      </Link>
     </section>
   );
 };

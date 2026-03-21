@@ -1,5 +1,5 @@
 const SectionSeparator = () => {
-  return <hr className="border-neutral-200 mt-28 mb-24" />
-}
+  return <hr className="border-subtle my-12" />;
+};
 
-export default SectionSeparator
+export default SectionSeparator;

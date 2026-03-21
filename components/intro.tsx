@@ -1,42 +1,23 @@
 import { CMS_NAME } from "../lib/constants";
-import cn from "classnames";
-import { useContext } from "react";
-import { ThemeContext } from "../context/themeContext";
 
 const Intro = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
-      <h1
-        className={cn(
-          "text-5xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8 transition-all duration-100",
-          {
-            "text-gray-900": theme === "light",
-            "text-gray-100": theme === "dark",
-          }
-        )}
-      >
-        Welcome to my blog
-      </h1>
-      <h4
-        className={cn(
-          "text-center md:text-left text-lg mt-5 md:pl-8 transition-all duration-100",
-          {
-            "text-gray-900": theme === "light",
-            "text-gray-100": theme === "dark",
-          }
-        )}
-      >
-        A personal blog, built using{" "}
+    <section className="py-14 border-b border-subtle">
+      <div className="flex items-center gap-3 mb-6">
+        <span className="font-mono text-xs text-accent">01</span>
+        <span className="text-[18px] text-primary font-medium">blog</span>
+        <div className="flex-1 h-px bg-subtle" />
+      </div>
+      <p className="text-sm text-muted leading-relaxed max-w-md">
+        A personal blog built with{" "}
         <a
           href="https://nextjs.org/"
-          className="underline hover:text-violet-600 duration-200 transition-colors"
+          className="text-accent hover:underline transition-colors duration-150"
         >
           Next.js
         </a>{" "}
-        and {CMS_NAME}.
-      </h4>
+        and {CMS_NAME}. Thoughts, learnings, and guides.
+      </p>
     </section>
   );
 };

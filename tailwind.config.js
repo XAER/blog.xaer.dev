@@ -1,32 +1,26 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
     extend: {
       colors: {
-        'accent-1': '#FAFAFA',
-        'accent-2': '#EAEAEA',
-        'accent-7': '#333',
-        success: '#0070f3',
-        cyan: '#79FFE1',
+        bg: 'var(--color-bg)',
+        surface: 'var(--color-surface)',
+        primary: 'var(--color-text-primary)',
+        muted: 'var(--color-text-muted)',
+        accent: 'var(--color-accent)',
+        subtle: 'var(--color-border)',
+        'subtle-hi': 'var(--color-border-hover)',
+        'subtle-accent': 'var(--color-border-accent)',
+        'accent-dim': 'var(--color-accent-dim)',
+        'accent-dim2': 'var(--color-accent-dim2)',
       },
-      spacing: {
-        28: '7rem',
+      fontFamily: {
+        sans: ['var(--font-geist-sans)', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'monospace'],
       },
-      letterSpacing: {
-        tighter: '-.04em',
-      },
-      lineHeight: {
-        tight: 1.2,
-      },
-      fontSize: {
-        '5xl': '2.5rem',
-        '6xl': '2.75rem',
-        '7xl': '4.5rem',
-        '8xl': '6.25rem',
-      },
-      boxShadow: {
-        sm: '0 5px 10px rgba(0, 0, 0, 0.12)',
-        md: '0 8px 30px rgba(0, 0, 0, 0.12)',
+      maxWidth: {
+        content: '740px',
       },
     },
   },

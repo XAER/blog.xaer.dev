@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ThemeContext } from "../context/themeContext";
 import Alert from "./alert";
 import Footer from "./footer";
 import Meta from "./meta";
-import cn from "classnames";
 import Navbar from "./navbar";
 
 type Props = {
@@ -14,16 +13,15 @@ type Props = {
 const Layout = ({ preview, children }: Props) => {
   const { theme } = React.useContext(ThemeContext);
 
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
   return (
     <>
-      <div
-        className={cn("transition-colors ease-in duration-200 min-h-screen", {
-          "bg-gray-100": theme === "light",
-          "bg-gray-900": theme === "dark",
-        })}
-      >
+      <div className="min-h-screen bg-bg relative">
         <Meta />
-        <div>
+        <div className="relative z-10">
           <Alert showAlert={preview} />
           <Navbar />
           <main>{children}</main>

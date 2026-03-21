@@ -1,27 +1,15 @@
-import classNames from "classnames";
 import Link from "next/link";
-import React from "react";
-import { ThemeContext } from "../context/themeContext";
 
 const Header = () => {
-  const { theme } = React.useContext(ThemeContext);
-
   return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-      <Link href="/">
-        <a
-          className={classNames(
-            "hover:underline transition-all duration-100 ease-in",
-            {
-              "text-gray-900": theme === "light",
-              "text-gray-100": theme === "dark",
-            }
-          )}
-        >
-          {"‹"}
-        </a>
+    <div className="pt-8 pb-4">
+      <Link
+        href="/"
+        className="font-mono text-xs text-muted hover:text-primary transition-colors duration-150"
+      >
+        &larr; back
       </Link>
-    </h2>
+    </div>
   );
 };
 
